@@ -5,7 +5,7 @@ import cors from 'cors';
 
 // Import route modules
 import studentRoutes from './Route/studentRoutes.js';
-import signupRoutes from './Route/signupRoute.js';
+
 
 
 dotenv.config();
@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 
 // Routes
 app.use('/api', studentRoutes);
-app.use('/api/auth', signupRoutes);
+
 
 // Optional error handling middleware
 app.use((err, req, res, next) => {
