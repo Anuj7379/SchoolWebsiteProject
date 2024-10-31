@@ -1,6 +1,9 @@
 // src/pages/StudentInfo.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import dotenv from 'dotenv';
+dotenv.config();
+const URI = process.env.MONGODB_URI;
 
 const InfoService = () => {
   const [students, setStudents] = useState([]);
@@ -17,7 +20,7 @@ const InfoService = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/students");
+        const response = await axios.get(URI);
         setStudents(response.data);
       } catch (error) {
         console.error("Error fetching students:", error);

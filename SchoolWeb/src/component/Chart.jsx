@@ -1,4 +1,5 @@
 // Chart page
+
 import React, { useEffect, useState } from "react";
 import axios from "axios"; // Import Axios for HTTP requests
 import { Bar } from 'react-chartjs-2';
@@ -15,6 +16,10 @@ import {
 // Register the necessary components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
+import dotenv from 'dotenv';
+dotenv.config();
+const URI = process.env.MONGODB_URI;
+
 
 
 function Chart() {
@@ -23,7 +28,7 @@ function Chart() {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/students");
+        const response = await axios.get(URI);
         setStudents(response.data);
       } catch (error) {
         console.error("Error fetching students:", error);
