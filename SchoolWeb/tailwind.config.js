@@ -10,5 +10,7 @@ export default {
   plugins: [
     require('daisyui'),
   ],
+  exclude:[
+   node_modules]
 }
 
