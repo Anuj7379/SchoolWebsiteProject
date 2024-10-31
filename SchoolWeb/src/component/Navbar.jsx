@@ -40,7 +40,7 @@ function Navbar() {
             </li>
             
             <li>
-              <a href="/login">AdminLogin</a>
+              <a href="">AdminLogin</a>
             </li>
           </ul>
         </div>
