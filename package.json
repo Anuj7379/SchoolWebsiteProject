@@ -5,8 +5,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon Schoolwebbackend/index.js",
+    "dev" : "nodemon Schoolwebbackend/index.js",
+    "build" : "npm install && npm install --prefix SchoolWeb && npm run build --prefix SchoolWeb"
+    
+
   },
   "author": "",
   "license": "ISC",

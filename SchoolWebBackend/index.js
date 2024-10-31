@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import path from 'path';
 
 // Import route modules
 import studentRoutes from './Route/studentRoutes.js';
@@ -11,6 +12,7 @@ import studentRoutes from './Route/studentRoutes.js';
 dotenv.config();
 
 const app = express();
+const _dirname = path.resolve();
 
 // Middleware
 app.use(cors());
@@ -26,12 +28,15 @@ mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .catch(err => console.error('MongoDB connection error:', err));
 
 // Basic route
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+
 
 // Routes
 app.use('/api', studentRoutes);
+
+app.use(express.static(path.join(_dirname, "/SchoolWeb/dist")))
+app.get('*', (req, res)=>{
+  res.sendFile(path.resolve(_dirname , "SchoolWeb" ,"dist" ,"index.html"))
+})
 
 
 // Optional error handling middleware
